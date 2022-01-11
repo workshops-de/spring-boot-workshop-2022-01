@@ -44,8 +44,8 @@ public class BookRestController {
     }
 
     @GetMapping("/{isbn}")
-    public Book getSingleBook(@PathVariable String isbn) throws Exception {
-        return this.books.stream().filter(book -> hasIsbn(book, isbn)).findFirst().orElseThrow(Exception::new);
+    public Book getSingleBook(@PathVariable String isbn) throws BookException {
+        return this.books.stream().filter(book -> hasIsbn(book, isbn)).findFirst().orElseThrow( () -> new BookException("wrong isbn"));
     }
 
     @GetMapping(params = "author")
