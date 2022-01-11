@@ -1,18 +1,20 @@
 package de.workshops.bookdemo.book;
 
-import java.io.File;
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(path = "/book")
 public class BookRestController {
     
     private final ObjectMapper mapper;
@@ -27,12 +29,12 @@ public class BookRestController {
     }
     
     @PostConstruct
-    public void init() throws Exception {
+    public void init() throws IOException {
         final var resource = resourceLoader.getResource("classpath:books.json");
-        this.books = Arrays.asList(mapper.readValue(new File("target/classes/books.json"), Book[].class));
+        this.books = mapper.readValue(resource.getInputStream(), new TypeReference<>() {});
     }
 
-    @GetMapping("/books")
+    @GetMapping
     public List<Book> getAllAbooks() {
         return this.books;
     }
