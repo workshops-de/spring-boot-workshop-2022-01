@@ -1,6 +1,9 @@
 spring:
     mvc:
         log-request-details: true
+    test:
+        mockmvc:
+            print: LOG_DEBUG
 logging:
     level:
         "[de.workshops]": debug
