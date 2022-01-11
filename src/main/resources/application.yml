@@ -1,0 +1,5 @@
+logging:
+    pattern:
+        console: "%d{HH:mm:ss} %highlight(%-5level) %highlight(%48.48logger) - %msg%n"
+    level:
+        "[de.workshops]": info
