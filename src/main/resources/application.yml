@@ -1,9 +1,27 @@
 spring:
     mvc:
         log-request-details: true
+
 logging:
     level:
         "[de.workshops]": debug
         web: debug
         "[org.springframework.web]": debug
+
+springdoc:
+    api-docs:
+        enabled: false
+
+myapp:
+    int-param: 42
+    string-param: test
+
+---
+spring:
+    config:
+        activate:
+            on-profile:
+                - prod
+server:
+    port: 8081
 
