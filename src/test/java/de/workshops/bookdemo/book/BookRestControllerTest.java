@@ -46,10 +46,10 @@ public class BookRestControllerTest {
                }
         }
 
-    @Test
-    void getAllBooksByMethod() {
-        assertEquals(3, bookRestController.getAllBooks().size());
-    }
+    // @Test
+    // void getAllBooksByMethod() {
+    //     assertEquals(3, bookRestController.getAllBooks().size());
+    // }
     
     @Test
     public void getAllBooks() throws Exception {
@@ -61,7 +61,7 @@ public class BookRestControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].title", CoreMatchers.is("Clean Code")));
     }
 
-    @Test
+    //@Test
     public void getAllBooksWithMvcResult() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(BookRestController.REQUEST_URL)).andReturn();
         String jsonPayload = result.getResponse().getContentAsString();

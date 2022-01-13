@@ -1,7 +1,5 @@
 package de.workshops.bookdemo.book;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -10,9 +8,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BookService {
     
-    private final BookRepository bookRepository;
+    private final BookJpaRepository bookRepository;
 
-	public List<Book> loadAllBooks() {
-		return bookRepository.findAllBooks();
+	public Iterable<Book> loadAllBooks() {
+		return bookRepository.findAll();
 	}
 }

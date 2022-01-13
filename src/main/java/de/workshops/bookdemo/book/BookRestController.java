@@ -1,16 +1,16 @@
 package de.workshops.bookdemo.book;
 
-import java.util.List;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping(path = BookRestController.REQUEST_URL)
 @RequiredArgsConstructor
+@Slf4j
 public class BookRestController {
     
     public static final String REQUEST_URL = "/book";
@@ -18,7 +18,7 @@ public class BookRestController {
     private final BookService bookService;
 
     @GetMapping
-    public List<Book> getAllBooks() {
+    public Iterable<Book> getAllBooks() {
         return bookService.loadAllBooks();
     }
 
