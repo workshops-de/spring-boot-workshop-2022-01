@@ -28,9 +28,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin().defaultSuccessUrl("/books")
                 .and()
-                .httpBasic();
+                .httpBasic()
+                .and()
+                .oauth2Login()
+                ;
+                
     }
 
     // @Override
